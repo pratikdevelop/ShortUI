@@ -88,7 +88,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4">YouTube Video Shortener</h1>
       <form onSubmit={handleSubmit} className="mb-4">
         <label className="block mb-2">
@@ -110,22 +110,21 @@ const Home = () => {
       </form>
 
       {/* Toggle switch for sorting/viewing vs. complete video download */}
-      <FormControlLabel
-        control={
-          <Switch
-            checked={viewingShorts}
-            onChange={() => setViewingShorts(!viewingShorts)}
-            name="viewingShorts"
-            color="primary"
-          />
-        }
-        label={viewingShorts ? 'View and Download Shorts' : 'Download Complete Video'}
-      />
+      <div className="flex items-center mb-4">
+        <span className="mr-2 text-gray-700">
+          {viewingShorts ? 'View and Download Shorts' : 'Download Complete Video'}
+        </span>
+        <Switch
+          checked={viewingShorts}
+          onChange={() => setViewingShorts(!viewingShorts)}
+          color="primary"
+        />
+      </div>
 
       {viewingShorts ? (
         <div>
           {shortUrls.length > 0 && (
-            <div>
+            <div className="mb-4">
               <h2 className="text-2xl font-semibold mb-4">Preview and Download Your Shorts</h2>
               {shortUrls.map((url, index) => (
                 <div key={index} className="mb-4">
@@ -134,12 +133,12 @@ const Home = () => {
                     <source src={url} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
-                  <Button
+                  <button
                     onClick={() => handleDownload(url)}
                     className="mt-2 inline-block text-blue-500 hover:underline cursor-pointer"
                   >
                     Download Short {index + 1}
-                  </Button>
+                  </button>
                 </div>
               ))}
             </div>
@@ -160,12 +159,12 @@ const Home = () => {
                   <p className="text-gray-600">
                     End Time: {short.end_time} seconds
                   </p>
-                  <Button
+                  <button
                     onClick={() => handleDownload(short.url)}
                     className="mt-2 inline-block text-blue-500 hover:underline cursor-pointer"
                   >
                     Download Short {index + 1}
-                  </Button>
+                  </button>
                 </div>
               ))}
             </div>
@@ -174,12 +173,12 @@ const Home = () => {
       ) : (
         <div>
           <h2 className="text-2xl font-semibold mb-4">Download Complete Video</h2>
-          <Button
+          <button
             onClick={handleCompleteVideoDownload}
             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
           >
             Download Complete Video
-          </Button>
+          </button>
         </div>
       )}
 
@@ -189,21 +188,20 @@ const Home = () => {
         <form onSubmit={handleShortLinkSubmit} className="mb-4">
           <label className="block mb-2">
             <span className="text-gray-700">YouTube Short URL:</span>
-            <TextField
+            <input
               type="text"
               value={shortLink}
               onChange={(e) => setShortLink(e.target.value)}
               required
-              fullWidth
-              className="mt-1"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded"
             />
           </label>
-          <Button
+          <button
             type="submit"
             className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
           >
             Download Short
-          </Button>
+          </button>
         </form>
         {shortDownloadUrl && (
           <div>
