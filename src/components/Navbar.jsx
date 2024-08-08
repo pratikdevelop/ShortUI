@@ -15,7 +15,7 @@ const NavBar = ({ isAuthenticated, setIsAuthenticated }) => {
       <Toolbar>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
           <MuiLink component={Link} to="/" color="inherit" underline="none">
-            Home
+            YouTube Shorts Download
           </MuiLink>
         </Typography>
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -38,8 +38,8 @@ const NavBar = ({ isAuthenticated, setIsAuthenticated }) => {
               </Button>
             </>
           )} */}
-          <IconButton color="inherit" component="a" href="https://www.facebook.com" target="_blank" aria-label="Facebook">
-            <Facebook />
+          {/* <IconButton color="inherit" component="a" href="https://www.facebook.com" target="_blank" aria-label="Facebook"> */}
+            {/* <Facebook />
           </IconButton>
           <IconButton color="inherit" component="a" href="https://www.instagram.com" target="_blank" aria-label="Instagram">
             <Instagram />
@@ -49,7 +49,7 @@ const NavBar = ({ isAuthenticated, setIsAuthenticated }) => {
           </IconButton>
           <IconButton color="inherit" component="a" href="https://www.youtube.com" target="_blank" aria-label="YouTube">
             <YouTube />
-          </IconButton>
+          </IconButton> */}
         </div>
       </Toolbar>
     </AppBar>

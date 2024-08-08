@@ -66,7 +66,7 @@ const Home = () => {
     console.log("ee",);
     axios
       .post(
-        "https://youtube-video-download-api-pg6z.onrender.com/download-video",
+        "https://youtube-video-download-api-pg6z.onrender.com/download-complete-video",
         {
           url: videoUrl,
         }
