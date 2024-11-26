@@ -10,6 +10,49 @@ const NavBar = ({ isAuthenticated, setIsAuthenticated }) => {
     setIsAuthenticated(false);
   };
 
+  const renderAuthButtons = () => {
+    if (isAuthenticated) {
+      return (
+        <>
+          <Button color="inherit" component={Link} to="/profile">
+            Profile
+          </Button>
+          <Button color="inherit" onClick={handleSignOut}>
+            Sign Out
+          </Button>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Button color="inherit" component={Link} to="/signup">
+            Sign Up
+          </Button>
+          <Button color="inherit" component={Link} to="/signin">
+            Sign In
+          </Button>
+        </>
+      );
+    }
+  };
+
+  const renderSocialIcons = () => (
+    <>
+      <IconButton color="inherit" href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+        <Facebook />
+      </IconButton>
+      <IconButton color="inherit" href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+        <Instagram />
+      </IconButton>
+      <IconButton color="inherit" href="https://www.twitter.com" target="_blank" aria-label="Twitter">
+        <Twitter />
+      </IconButton>
+      <IconButton color="inherit" href="https://www.youtube.com" target="_blank" aria-label="YouTube">
+        <YouTube />
+      </IconButton>
+    </>
+  );
+
   return (
     <AppBar position="static" style={{ height: "4rem" }}>
       <Toolbar>
@@ -19,37 +62,8 @@ const NavBar = ({ isAuthenticated, setIsAuthenticated }) => {
           </MuiLink>
         </Typography>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          {/* {isAuthenticated ? (
-            <>
-              <Button color="inherit" component={Link} to="/profile">
-                Profile
-              </Button>
-              <Button color="inherit" onClick={handleSignOut}>
-                Sign Out
-              </Button>
-            </>
-          ) : (
-            <>
-              <Button color="inherit" component={Link} to="/signup">
-                Sign Up
-              </Button>
-              <Button color="inherit" component={Link} to="/signin">
-                Sign In
-              </Button>
-            </>
-          )} */}
-          {/* <IconButton color="inherit" component="a" href="https://www.facebook.com" target="_blank" aria-label="Facebook"> */}
-            {/* <Facebook />
-          </IconButton>
-          <IconButton color="inherit" component="a" href="https://www.instagram.com" target="_blank" aria-label="Instagram">
-            <Instagram />
-          </IconButton>
-          <IconButton color="inherit" component="a" href="https://www.twitter.com" target="_blank" aria-label="Twitter">
-            <Twitter />
-          </IconButton>
-          <IconButton color="inherit" component="a" href="https://www.youtube.com" target="_blank" aria-label="YouTube">
-            <YouTube />
-          </IconButton> */}
+          {renderAuthButtons()}
+          {renderSocialIcons()}
         </div>
       </Toolbar>
     </AppBar>
