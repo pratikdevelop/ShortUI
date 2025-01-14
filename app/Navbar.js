@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 
 const Navbar = () => {
   const [user, setUser] = useState(''); // State to store user profile
-  const token = localStorage.getItem("token");
+  const token = typeof window !== 'undefined' ?  localStorage.getItem("token"): null;
 
   // Fetch the user profile when the component mounts
   useEffect(() => {
